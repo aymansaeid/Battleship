@@ -89,7 +89,10 @@ public class BattleshipServer extends Thread {
         // Switch turn on miss
         if (result == ShotResult.MISS) {
             switchTurn();
-        }
+        }else {
+        // Immediately notify current player they can shoot again
+        sendToPlayer(currentPlayerIndex, "TURN:" + (currentPlayerIndex + 1));
+    }
     }
     
     private void sendToPlayer(int index, String message) {
