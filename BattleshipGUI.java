@@ -204,9 +204,17 @@ public class BattleshipGUI extends JFrame {
     }
     
     public void setTurn(boolean myTurn) {
-        this.myTurn = myTurn;
-        statusLabel.setText(myTurn ? "Your turn! Attack opponent's board" : "Opponent's turn...");
+    this.myTurn = myTurn;
+    statusLabel.setText(myTurn ? "Your turn! Attack opponent's board" : "Opponent's turn...");
+    
+    // Enable/disable opponent board buttons
+    Component[] opponentButtons = opponentBoardPanel.getComponents();
+    for (Component c : opponentButtons) {
+        if (c instanceof JButton) {
+            c.setEnabled(myTurn && !placingShips);
+        }
     }
+}
     
     public void updateOpponentBoard(int x, int y, ShotResult result) {
         SwingUtilities.invokeLater(() -> updateBoard(opponentBoardPanel, x, y, result, true));
