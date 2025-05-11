@@ -69,7 +69,14 @@ public class BattleshipClient {
             int x = Integer.parseInt(parts[0]);
             int y = Integer.parseInt(parts[1]);
             ShotResult result = ShotResult.valueOf(parts[2]);
-            SwingUtilities.invokeLater(() -> gui.updateOpponentBoard(x, y, result));
+            SwingUtilities.invokeLater(() -> {
+            gui.updateOpponentBoard(x, y, result);
+            // Re-enable shooting if it was a hit KKKKKKKK 
+            if (result.isHit()) {
+                gui.setTurn(true);
+            }
+        });
+    
         } 
         else if (message.startsWith("OPPONENT_SHOT:")) {
             String[] parts = message.substring(14).split(",");
