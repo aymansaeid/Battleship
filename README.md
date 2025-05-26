@@ -15,4 +15,4 @@ Java kullanılarak Server-Client mimarisi ile gerçek zamanlı oyun oynanabilir.
 - Socket Programming
 
 # NOTE :
-on this version only two players can play the game ! ( without aws )
+on this version only two players can play the game ! ( without aws connection / localhost connection )
